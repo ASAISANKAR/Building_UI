@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/data/*"
-to = ":DEV_API/:splat"
+to = ":REACT_APP_DEV_API/:splat"
 status = 200
 force = true
