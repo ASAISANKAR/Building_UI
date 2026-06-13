@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = `/data/building`;
+const API_BASE = `${process.env.REACT_APP_DEV_API}/building`;
 const getAuthHeaders = () => ({
     Authorization: `Bearer ${process.env.REACT_APP_Token}`,
 });
