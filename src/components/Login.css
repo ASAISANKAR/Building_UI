@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Background */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #5f2c82, #49a09d);
+}
+
+/* Card */
+.card {
+    width: 360px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    color: white;
+    text-align: center;
+}
+
+/* Title */
+.title {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.tabs button.active {
+    background: white;
+    color: black;
+    border-radius: 10px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+input:focus {
+    box-shadow: 0 0 5px #00ffcc;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-basic {
+    background: #007bff;
+}
+
+.btn-jwt {
+    background: #28a745;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* Error */
+.error {
+    background: rgba(255, 0, 0, 0.2);
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* Result */
+.result {
+    margin-top: 15px;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+.loading {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f0f4ff;
+    border-radius: 8px;
+    color: #333;
+    font-weight: 500;
+}
