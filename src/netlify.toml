@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/data"
-to = "https://jwt-cdk-1.onrender.com"
+to = "REACT_APP_DEV_API"
 status = 200
 force = true
