@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/data"
-to = "REACT_APP_DEV_API"
-status = 200
-force = true

@@ -1,0 +1,9 @@
+
+[build]
+publish = "build"
+
+[[redirects]]
+from = "/data/*"
+to = ":DEV_API/:splat"
+status = 200
+force = true
