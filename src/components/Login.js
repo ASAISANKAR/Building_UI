@@ -63,10 +63,7 @@ const Login = () => {
             localStorage.setItem("jwt", form.jwt);
             setLoading(false);
             setResponse(res.data);
-
-            setTimeout(() => {
-                navigate("/");
-            }, 1000);
+            navigate("/");
         } catch {
             setError("Invalid JWT token");
             setLoading(false);
