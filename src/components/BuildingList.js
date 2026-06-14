@@ -24,6 +24,14 @@ function BuildingList() {
         onSuccess: () => {
             alert("✅ Building deleted!");
             getBuildings().then((res) => setBuildings(res.data));
+        },
+        onError: (error) => {
+            const status = error?.response?.status;
+            if (status === 302 || status === 401 || status === 403) {
+                alert("❌ You are not authorized to delete building");
+            } else {
+                alert("❌ Failed to delete building");
+            }
         }
     });
 
