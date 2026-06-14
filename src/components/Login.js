@@ -190,7 +190,7 @@ const Login = () => {
                     alignItems: "center",
                 }}>
                 {response && (
-                    <JwtToken />
+                    <JwtToken data={response} />
                 )}
                 </div>
                 {response && (<h2>Copy & Login in JWT Tab</h2>)}

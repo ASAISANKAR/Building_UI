@@ -7,9 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-const JwtToken = () => {
+const JwtToken = ({token}) => {
 
-const jwt_token = localStorage.getItem("jwt");
+const jwt_token = localStorage.getItem("jwt") || token;
 const [header, payload, signature] = jwt_token.split(".");
 const [copied, setCopied] = useState(false);
 
