@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createBuilding } from "../api/buildingservice";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {getCSRF_TOKEN} from "../api/csrf_tokenservice";
+import {IndeterminateCircleLoader} from "@cdkglobal/radial";
 
 function BuildingForm() {
     const [form, setForm] = useState({
@@ -10,7 +11,7 @@ function BuildingForm() {
         floors: []
     });
 
-    const { data: csrfToken } = useQuery({
+    const { data: csrfToken, isLoading } = useQuery({
         queryKey: ['csrfToken'],
         queryFn: getCSRF_TOKEN
     });
@@ -19,6 +20,14 @@ function BuildingForm() {
         onSuccess: () => {
             alert("✅ Building created!");
             setForm({ name: "", nooffloors: "", floors: [] });
+        },
+        onError: (error) => {
+            const status = error?.response?.status;
+            if (status === 302 || status === 401 || status === 403) {
+                alert("❌ You are not authorized to add building");
+            } else {
+                alert("❌ Failed to create building");
+            }
         }
     });
 
@@ -29,7 +38,7 @@ function BuildingForm() {
         });
     };
 
-    // ✅ Add floor
+
     const addFloor = () => {
         setForm({
             ...form,
@@ -37,7 +46,7 @@ function BuildingForm() {
         });
     };
 
-    // ✅ Handle floor input change
+
     const handleFloorChange = (index, field, value) => {
         const updatedFloors = [...form.floors];
         updatedFloors[index][field] = value;
@@ -48,7 +57,6 @@ function BuildingForm() {
         });
     };
 
-    // ✅ Remove floor
     const removeFloor = (index) => {
         const updatedFloors = form.floors.filter((_, i) => i !== index);
         setForm({ ...form, floors: updatedFloors });
@@ -69,6 +77,26 @@ function BuildingForm() {
         createMutation.mutate(payload);
     };
 
+
+    if (isLoading) {
+            return (
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100vh"
+                    }}
+                >
+                    <IndeterminateCircleLoader
+                        ariaLabel="Loading"
+                        size="large"
+                    />
+                </div>
+            );
+    }
+
+
     return (
         <div style={containerStyle}>
             <div style={formCard}>
@@ -86,7 +114,7 @@ function BuildingForm() {
                         required
                     />
 
-                    {/* Number of floors */}
+
                     <input
                         style={inputStyle}
                         name="nooffloors"
@@ -97,7 +125,6 @@ function BuildingForm() {
                         required
                     />
 
-                    {/* Floors section */}
                     <h4>Floors</h4>
 
                     {form.floors.map((floor, index) => (
