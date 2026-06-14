@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createBuilding } from "../api/buildingservice";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {getCSRF_TOKEN} from "../api/csrf_tokenservice";
-import {IndeterminateCircleLoader} from "@cdkglobal/radial";
 
 function BuildingForm() {
     const [form, setForm] = useState({
@@ -88,10 +87,7 @@ function BuildingForm() {
                         height: "100vh"
                     }}
                 >
-                    <IndeterminateCircleLoader
-                        ariaLabel="Loading"
-                        size="large"
-                    />
+                   Loading....
                 </div>
             );
     }

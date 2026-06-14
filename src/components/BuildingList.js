@@ -2,7 +2,6 @@ import { useState } from "react";
 import { deleteBuilding, getBuildings } from "../api/buildingservice";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {getCSRF_TOKEN} from "../api/csrf_tokenservice";
-import {IndeterminateCircleLoader} from "@cdkglobal/radial";
 
 function BuildingList() {
     const [buildings, setBuildings] = useState([]);
@@ -38,10 +37,7 @@ function BuildingList() {
                     height: "100vh"
                 }}
             >
-                <IndeterminateCircleLoader
-                    ariaLabel="Loading"
-                    size="large"
-                />
+                Loading.....
             </div>
         );
     }

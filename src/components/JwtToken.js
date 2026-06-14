@@ -1,16 +1,12 @@
-import {Card, CardBody, CardContent, CardHeader, CardRow, IconCheck, IconContentCopy} from '@cdkglobal/radial';
-import styled from 'styled-components';
 import {useState} from "react";
-
-const StyledCustomFooter = styled.div`
-  display: flex;
-  border-top: 1px solid lightgray;
-  gap: 16px;
-  justify-content: flex-end;
-  margin-top: 8px;
-  padding: 16px;
-`;
-
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import CheckIcon from '@mui/icons-material/Check';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 const JwtToken = () => {
 
 const jwt_token = localStorage.getItem("jwt");
@@ -34,23 +30,24 @@ const [copied, setCopied] = useState(false);
     };
     return (
         <div style={{ width: '400px' }}>
-            <Card>
-                <CardBody>
-                    <CardHeader cardTitle="Your's JWT Token" />
-                    <CardContent>
-                        <CardRow>
-                              <span style={{ fontFamily: "monospace" }}>
-                                <span style={{ color: "#f6513b" }}>{header}</span>.
-                                <span style={{ color: "#7122c5" }}>{payload}</span>.
-                                <span style={{ color: "#12d622" }}>{signature}</span>
-                              </span>
-                        </CardRow>
-                    </CardContent>
-                </CardBody>
-                <StyledCustomFooter onClick={handleCopy}>
-                    {copied ? <IconCheck /> : <IconContentCopy />}
-                </StyledCustomFooter>
+            <Card sx={{ width: 400 }}>
+                <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                        Your's JWT Token
+                    </Typography>
+                    <Box sx={{ fontFamily: "monospace", wordBreak: "break-all" }}>
+                        <span style={{ color: "#f6513b" }}>{header}</span>.
+                        <span style={{ color: "#7122c5" }}>{payload}</span>.
+                        <span style={{ color: "#12d622" }}>{signature}</span>
+                    </Box>
+                </CardContent>
+                <CardActions sx={{ justifyContent: "flex-end" }}>
+                    <Button onClick={handleCopy}>
+                        {copied ? <CheckIcon /> : <ContentCopyIcon />}
+                    </Button>
+                </CardActions>
             </Card>
+            );
         </div>
     );
 

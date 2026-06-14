@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cdkglobal/radial": "^8.4.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.1.1",
+    "@mui/material": "^9.1.1",
     "@react-oauth/google": "^0.13.5",
     "@tanstack/react-query": "^4.44.0",
     "@testing-library/dom": "^10.4.1",
@@ -12,14 +15,12 @@
     "@testing-library/user-event": "^13.5.0",
     "ag-grid-enterprise": "^35.3.1",
     "axios": "^1.17.0",
-    "express": "^5.2.1",
     "framer-motion": "^12.40.0",
     "http-proxy-middleware": "^4.1.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.17.0",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
