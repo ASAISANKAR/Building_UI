@@ -47,7 +47,6 @@ const [copied, setCopied] = useState(false);
                     </Button>
                 </CardActions>
             </Card>
-            );
         </div>
     );
 

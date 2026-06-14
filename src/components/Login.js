@@ -41,7 +41,7 @@ const Login = () => {
                 }
             });
 
-            localStorage.setItem("auth", token);
+            localStorage.setItem("jwt", res.data);
             setLoading(false);
             setResponse(res.data);
 
@@ -67,7 +67,7 @@ const Login = () => {
             setTimeout(() => {
                 navigate("/");
             }, 1000);
-            await navigate("/")
+            navigate("/")
         } catch {
             setError("Invalid JWT token");
             setLoading(false);
@@ -135,9 +135,6 @@ const Login = () => {
                     <div className="loading">⏳ Authenticating...</div>
                 ) : (
                     <form onSubmit={handleSubmit}>
-
-
-
                     {authType === "basic" && (
                         <>
                             <input
@@ -175,8 +172,6 @@ const Login = () => {
                             </button>
                         </>
                     )}
-
-
                     {authType === "oauth" && (
                         <div style={{ marginTop: "10px" }}>
                             <GoogleLogin
@@ -188,9 +183,17 @@ const Login = () => {
 
                 </form>
                 )}
+                <div style={{
+                    paddingTop: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
                 {response && (
                     <JwtToken />
                 )}
+                </div>
+                {response && (<h2>Copy & Login in JWT Tab</h2>)}
 
             </div>
         </div>
