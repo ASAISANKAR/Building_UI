@@ -3,6 +3,7 @@ import axios from "axios";
 import { GoogleLogin } from "@react-oauth/google";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
+import JwtToken from "./JwtToken";
 
 const Login = () => {
     const [authType, setAuthType] = useState("basic");
@@ -18,7 +19,7 @@ const Login = () => {
     const [response, setResponse] = useState("");
     const [error, setError] = useState("");
 
-    const API_URL = '/data';
+    const API_URL = '/data/myjwt';
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -43,10 +44,6 @@ const Login = () => {
             localStorage.setItem("auth", token);
             setLoading(false);
             setResponse(res.data);
-
-            setTimeout(() => {
-                navigate("/");
-            }, 1000);
 
         } catch {
             setError("Invalid username or password");
@@ -192,10 +189,7 @@ const Login = () => {
                 </form>
                 )}
                 {response && (
-                    <div
-                        className="result"
-                        dangerouslySetInnerHTML={{ __html: response }}
-                    />
+                    <JwtToken />
                 )}
 
             </div>
