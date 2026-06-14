@@ -2,18 +2,19 @@ import { useState } from "react";
 import { deleteBuilding, getBuildings } from "../api/buildingservice";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {getCSRF_TOKEN} from "../api/csrf_tokenservice";
+import {IndeterminateCircleLoader} from "@cdkglobal/radial";
 
 function BuildingList() {
     const [buildings, setBuildings] = useState([]);
 
-    useQuery(
+    const {isLoading: buildingLoading} = useQuery(
         {
             queryKey: ['buildings'],
             queryFn: getBuildings,
             onSuccess: (res) => setBuildings(res.data),
         }
     )
-    const { data: csrfData, isLoading } = useQuery({
+    const { data: csrfData, isLoading: csrfLoading } = useQuery({
         queryKey: ['csrfToken'],
         queryFn: getCSRF_TOKEN
     });
@@ -27,14 +28,30 @@ function BuildingList() {
         }
     });
 
-    if (isLoading) return <p>Loading...</p>;
+    if (csrfLoading || buildingLoading) {
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100vh"
+                }}
+            >
+                <IndeterminateCircleLoader
+                    ariaLabel="Loading"
+                    size="large"
+                />
+            </div>
+        );
+    }
 
     return (
         <div style={containerStyle}>
             <h2 style={titleStyle}>🏢 Building Management</h2>
 
             <div style={gridStyle}>
-                {buildings.map((b) => (
+                {buildings?.map((b) => (
                     <div key={b.id} style={cardStyle}>
                         <div style={headerStyle}>
                             <h3 style={buildingName}>{b.name}</h3>
@@ -46,7 +63,7 @@ function BuildingList() {
                         <p style={sectionTitle}>Floors</p>
 
                         <div style={floorContainer}>
-                            {b.floors.map((f) => (
+                            {b?.floors?.map((f) => (
                                 <div key={f.id} style={floorCard}>
                                     <strong>Floor {f.floorNo}</strong>
                                     <p style={companyText}>
