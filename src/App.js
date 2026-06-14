@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JwtToken from "./components/JwtToken";
+import Logout from "./components/Logout";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                             <Route path="/" element={<BuildingList />} />
                             <Route path="/create" element={<BuildingForm />} />
                             <Route path="/jwt" element={<JwtToken />} />
+                            <Route path="logout" element={<Logout />} />
                         </Route>
                     </Routes>
         </BrowserRouter>
