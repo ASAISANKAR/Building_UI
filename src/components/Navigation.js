@@ -9,6 +9,7 @@ const Navigation = () => {
                 <div className="nav-links">
                     <Link to="/">Home</Link>
                     <Link to="/create">Add Building</Link>
+                    <Link to="/jwt">My JWT</Link>
                 </div>
             </nav>
             <Outlet />
