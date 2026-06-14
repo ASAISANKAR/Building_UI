@@ -41,7 +41,7 @@ const Login = () => {
                 }
             });
 
-            localStorage.setItem("jwt", res.data);
+            localStorage.setItem("auth", token);
             setLoading(false);
             setResponse(res.data);
 
