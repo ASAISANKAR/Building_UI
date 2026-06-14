@@ -67,7 +67,6 @@ const Login = () => {
             setTimeout(() => {
                 navigate("/");
             }, 1000);
-            navigate("/")
         } catch {
             setError("Invalid JWT token");
             setLoading(false);
