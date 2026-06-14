@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const API_BASE = `/data/csrf-token`;
+const jwt_token = localStorage.getItem("jwt");
 const getAuthHeaders = () => ({
-    Authorization: `Bearer ${process.env.REACT_APP_Token}`,
+    Authorization: 'Bearer '+jwt_token,
 });
 
 export const getCSRF_TOKEN = () => {

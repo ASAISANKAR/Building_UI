@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const API_BASE = `/data/building`;
+const jwt_token = localStorage.getItem("jwt");
 const getAuthHeaders = () => ({
-    Authorization: `Bearer ${process.env.REACT_APP_Token}`,
+    Authorization: 'Bearer '+jwt_token,
 });
 
 
