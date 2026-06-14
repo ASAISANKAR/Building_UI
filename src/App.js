@@ -5,6 +5,7 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import JwtToken from "./components/JwtToken";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         }>
                             <Route path="/" element={<BuildingList />} />
                             <Route path="/create" element={<BuildingForm />} />
+                            <Route path="/jwt" element={<JwtToken />} />
                         </Route>
                     </Routes>
         </BrowserRouter>
